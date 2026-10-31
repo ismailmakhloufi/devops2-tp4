@@ -1,11 +1,11 @@
-import { Suspense } from "react";
+﻿import { Suspense } from "react";
 import { connection } from "next/server";
 import CoursList from "@/components/CoursList";
 import DevOpsLoop from "@/components/DevOpsLoop";
 import { getCours } from "@/lib/api";
-import { sortBySession } from "@/lib/cours";
+import { sortBySession } from "@devops2/cours-utils";
 
-// Rendu à la requête (pas au build) : Strapi n'est pas joignable pendant "next build"
+// Rendu Ã  la requÃªte (pas au build) : Strapi n'est pas joignable pendant "next build"
 async function CoursSection() {
   await connection();
   try {
@@ -34,15 +34,15 @@ export default function Home() {
       <header className="hero">
         <div className="container">
           <div>
-            <div className="eyebrow">Module ECUE733 · Site pédagogique</div>
+            <div className="eyebrow">Module ECUE733 Â· Site pÃ©dagogique</div>
             <h1>Les cours du module DevOps 2</h1>
             <p className="lead">
-              De Git au déploiement continu : retrouvez chaque séance, sa durée, son niveau et ses notions clés.
+              De Git au dÃ©ploiement continu : retrouvez chaque sÃ©ance, sa durÃ©e, son niveau et ses notions clÃ©s.
             </p>
             <div className="hero-actions">
               <a className="btn btn-primary" href="#cours">Voir les cours</a>
             </div>
-            <span className="pill">DevOps 2 · TP3</span>
+            <span className="pill">DevOps 2 Â· TP3</span>
           </div>
           <DevOpsLoop className="loop" />
         </div>
@@ -54,7 +54,7 @@ export default function Home() {
             <h2>Les cours</h2>
             <p>Cherchez une notion ou filtrez par niveau.</p>
           </div>
-          <Suspense fallback={<p>Chargement des cours…</p>}>
+          <Suspense fallback={<p>Chargement des coursâ€¦</p>}>
             <CoursSection />
           </Suspense>
         </div>

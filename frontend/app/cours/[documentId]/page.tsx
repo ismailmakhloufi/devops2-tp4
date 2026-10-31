@@ -1,9 +1,9 @@
-import { Suspense } from "react";
+﻿import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { getCoursById } from "@/lib/api";
-import { formatDuration, LEVEL_LABELS } from "@/lib/cours";
+import { formatDuration, LEVEL_LABELS } from "@devops2/cours-utils";
 
 async function CoursDetail({ params }: { params: Promise<{ documentId: string }> }) {
   await connection();
@@ -15,16 +15,16 @@ async function CoursDetail({ params }: { params: Promise<{ documentId: string }>
 
   return (
     <article className="cours-detail">
-      <div className="eyebrow">Séance {String(cours.session).padStart(2, "0")}</div>
+      <div className="eyebrow">SÃ©ance {String(cours.session).padStart(2, "0")}</div>
       <h1>{cours.title}</h1>
       {cours.summary && <p className="lead">{cours.summary}</p>}
       <dl className="cours-meta">
         <div>
-          <dt>Séance</dt>
+          <dt>SÃ©ance</dt>
           <dd>{cours.session}</dd>
         </div>
         <div>
-          <dt>Durée</dt>
+          <dt>DurÃ©e</dt>
           <dd>{formatDuration(cours.duration)}</dd>
         </div>
         <div>
@@ -33,7 +33,7 @@ async function CoursDetail({ params }: { params: Promise<{ documentId: string }>
         </div>
       </dl>
       {cours.topics.length > 0 && (
-        <ul className="topics" aria-label="Mots-clés">
+        <ul className="topics" aria-label="Mots-clÃ©s">
           {cours.topics.map((topic) => (
             <li key={topic}>{topic}</li>
           ))}
@@ -48,8 +48,8 @@ export default function CoursPage({ params }: PageProps<"/cours/[documentId]">) 
     <main>
       <section>
         <div className="container">
-          <Link className="back" href="/#cours">← Tous les cours</Link>
-          <Suspense fallback={<p>Chargement du cours…</p>}>
+          <Link className="back" href="/#cours">â† Tous les cours</Link>
+          <Suspense fallback={<p>Chargement du coursâ€¦</p>}>
             <CoursDetail params={params} />
           </Suspense>
         </div>

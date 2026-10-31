@@ -1,7 +1,7 @@
-import { render, screen, within } from "@testing-library/react";
+﻿import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import CoursCard from "@/components/CoursCard";
-import type { Cours } from "@/lib/cours";
+import type { Cours } from "@devops2/cours-utils";
 
 const COURS: Cours = {
   id: 3,
@@ -21,20 +21,20 @@ describe("CoursCard", () => {
     expect(lien).toHaveAttribute("href", "/cours/abc123");
   });
 
-  it("affiche la durée formatée et le libellé du niveau", () => {
+  it("affiche la durÃ©e formatÃ©e et le libellÃ© du niveau", () => {
     render(<CoursCard cours={COURS} />);
     expect(screen.getByText("1 h 30")).toBeInTheDocument();
     expect(screen.getByText("Intermédiaire")).toBeInTheDocument();
   });
 
-  it("affiche les mots-clés", () => {
+  it("affiche les mots-clÃ©s", () => {
     render(<CoursCard cours={COURS} />);
-    const motsCles = screen.getByRole("list", { name: "Mots-clés" });
+    const motsCles = screen.getByRole("list", { name: "Mots-clÃ©s" });
     expect(within(motsCles).getAllByRole("listitem").map((li) => li.textContent)).toEqual(["Docker", "Images"]);
   });
 
-  it("n'affiche pas de liste de mots-clés quand il n'y en a pas", () => {
+  it("n'affiche pas de liste de mots-clÃ©s quand il n'y en a pas", () => {
     render(<CoursCard cours={{ ...COURS, topics: [] }} />);
-    expect(screen.queryByRole("list", { name: "Mots-clés" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("list", { name: "Mots-clÃ©s" })).not.toBeInTheDocument();
   });
 });

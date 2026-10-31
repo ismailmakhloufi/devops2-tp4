@@ -1,6 +1,6 @@
-import type { Cours } from "@/lib/cours";
+﻿import type { Cours } from "@devops2/cours-utils";
 
-// Mot de passe du client auprès de l'API (fourni par l'environnement)
+// Mot de passe du client auprÃ¨s de l'API (fourni par l'environnement)
 const API_PASSWORD = process.env.STRAPI_CLIENT_PASSWORD ?? "";
 
 type StrapiCours = Omit<Cours, "topics" | "summary"> & { summary?: string | null; topics?: unknown };
@@ -32,7 +32,7 @@ export async function getCours(): Promise<Cours[]> {
     headers: headers(),
   });
   if (!res.ok) {
-    throw new Error(`Strapi a répondu ${res.status}`);
+    throw new Error(`Strapi a rÃ©pondu ${res.status}`);
   }
   const json: { data: StrapiCours[] } = await res.json();
   return json.data.map(toCours);
@@ -46,7 +46,7 @@ export async function getCoursById(documentId: string): Promise<Cours | null> {
     return null;
   }
   if (!res.ok) {
-    throw new Error(`Strapi a répondu ${res.status}`);
+    throw new Error(`Strapi a rÃ©pondu ${res.status}`);
   }
   const json: { data: StrapiCours } = await res.json();
   return toCours(json.data);

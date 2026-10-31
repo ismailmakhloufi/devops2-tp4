@@ -1,21 +1,21 @@
-import Link from "next/link";
-import { formatDuration, LEVEL_LABELS, type Cours } from "@/lib/cours";
+﻿import Link from "next/link";
+import { formatDuration, LEVEL_LABELS, type Cours } from "@devops2/cours-utils";
 
 export default function CoursCard({ cours }: { cours: Cours }) {
   return (
     <article className="card cours-card">
-      <div className="num">Séance {String(cours.session).padStart(2, "0")}</div>
+      <div className="num">SÃ©ance {String(cours.session).padStart(2, "0")}</div>
       <h3>
         <Link href={`/cours/${cours.documentId}`}>{cours.title}</Link>
       </h3>
       {cours.summary && <p>{cours.summary}</p>}
       <dl className="cours-meta">
         <div>
-          <dt>Séance</dt>
+          <dt>SÃ©ance</dt>
           <dd>{cours.session}</dd>
         </div>
         <div>
-          <dt>Durée</dt>
+          <dt>DurÃ©e</dt>
           <dd>{formatDuration(cours.duration)}</dd>
         </div>
         <div>
@@ -24,7 +24,7 @@ export default function CoursCard({ cours }: { cours: Cours }) {
         </div>
       </dl>
       {cours.topics.length > 0 && (
-        <ul className="topics" aria-label="Mots-clés">
+        <ul className="topics" aria-label="Mots-clÃ©s">
           {cours.topics.map((topic) => (
             <li key={topic}>{topic}</li>
           ))}
